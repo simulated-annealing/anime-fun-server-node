@@ -1,0 +1,24 @@
+{
+  "name": "anime-fun-server",
+  "version": "1.0.0",
+  "description": "anime fun server project",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/simulated-annealing/anime-fun-server-node.git"
+  },
+  "author": "hao tang",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/simulated-annealing/anime-fun-server-node/issues"
+  },
+  "homepage": "https://github.com/simulated-annealing/anime-fun-server-node#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "mongoose": "^5.12.5"
+  }
+}
