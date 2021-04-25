@@ -1,17 +1,24 @@
 const userService = require('../services/user-service')
+const activityDao = require('../models/activities/activity-dao')
 
 module.exports = app => {
     app.post('/api/users', (req, res) => {
         const user = req.body
         userService.findUserByName(user.username).then(acturalUser => {
             if (acturalUser) {
-                console.log('already signed up')
                 res.send('0')
                 return
             }
-            userService.createUser(user).then(newUser => {
+            userService.createUser({
+                ...user,
+                createAt: new Date().toDateString()
+            }).then(newUser => {
+                activityDao.createActivity({
+                    createAt: newUser.createAt,
+                    username: newUser.username,
+                    action: 'SIGN_UP'
+                })
                 req.session['profile'] = newUser
-                console.log('send new user ', newUser)
                 res.send(newUser)
             })
         })
@@ -19,7 +26,7 @@ module.exports = app => {
 
     app.delete('/api/users/:userId(.+)', (req, res) => {
         userService.deleteUser(req.params.userId).then(() =>
-            res.status(200).send())
+            res.send())
     })
 
     app.get('/api/users', (req, res) => {
