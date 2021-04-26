@@ -10,6 +10,7 @@ module.exports = app => {
             createAt: new Date().toDateString()
         }).then(comment => {
             activityDao.createActivity({
+                now: Date.now(),
                 createAt:comment.createAt,
                 username: comment.username,
                 animeId: comment.animeId,
