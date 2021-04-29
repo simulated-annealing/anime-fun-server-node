@@ -1,4 +1,5 @@
 const feedbackDao = require('../models/feedbacks/feedback-dao')
+const author = require('../configures/authorization')
 
 module.exports = app => {
     app.post('/api/feedbacks', (req, res) => {
@@ -19,6 +20,11 @@ module.exports = app => {
     })
 
     app.get('/api/feedbacks', (req, res) => {
+        if (!req.session.profile || req.session.profile.role !== 'ADMIN'
+            || !(req.session.profile.authorization&author.VIEW_FEEDBACK)) {
+            res.send("0")
+            return
+        }
         feedbackDao.findAllFeedbacks().then(feedbacks =>
             res.send(feedbacks))
     })

@@ -62,6 +62,7 @@ module.exports = app => {
             if (!req.session.profile || req.session.profile.username !== user.username) {
                 user.email = 'undisclosed information'
                 user.phone = 'undisclosed information'
+                user.dob = 'undisclosed information'
             }
             res.send(user)
         })
@@ -220,7 +221,10 @@ module.exports = app => {
                         'https://i.pinimg.com/564x/5d/38/94/5d389432d37afcd10b02e29b0bd9ff0b.jpg',
                         'https://i.pinimg.com/564x/c5/2e/66/c52e66eb45b67d5ea806275d7d65a739.jpg',
                         'https://i.pinimg.com/564x/5a/37/2a/5a372ad49d4f3b61ea969cdc6a926274.jpg',
-                        'https://i.pinimg.com/564x/08/98/40/089840829e7083a6021ce1b0c4e35a4b.jpg']
+                        'https://i.pinimg.com/564x/08/98/40/089840829e7083a6021ce1b0c4e35a4b.jpg',
+                        'https://i.pinimg.com/564x/91/95/7a/91957aca726d5548e902f2f85694fddd.jpg',
+                        'https://i.pinimg.com/564x/a8/d9/de/a8d9de1bb9db572052f2750d42d1157f.jpg',
+                        'https://i.pinimg.com/564x/de/54/40/de5440b1d15bb96016a0f39318d2e9a8.jpg']
         const rid = Math.floor(Math.random()*avatars.length)
         return avatars[rid]
     }

@@ -1,6 +1,7 @@
 const commentDao = require('../models/comments/comment-dao')
 const activityDao = require('../models/activities/activity-dao')
 const userDao = require('../models/users/user-dao')
+const author = require('../configures/authorization')
 
 module.exports = app => {
     app.post('/api/comments/anime/:animeId', (req, res) => {
@@ -26,7 +27,8 @@ module.exports = app => {
     })
 
     app.delete('/api/comments/:commentId', (req, res) => {
-        if (!req.session.profile || req.session.profile.role !== 'ADMIN') {
+        if (!req.session.profile || req.session.profile.role !== 'ADMIN'
+            || !(req.session.profile.authorization&author.DELETE_COMMENT)) {
             res.send("0")
             return
         }

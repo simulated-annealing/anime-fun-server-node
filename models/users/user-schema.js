@@ -8,7 +8,7 @@ const userSchema = mongoose.Schema({
     avatar: String,
     email: String,
     phone: String,
-    authorization: {type: String, enum: ['SUPER', 'NORMAL']},
+    authorization: Number,
     exp: Number,
     dob: String,
     role: {type: String, enum: ['USER', 'ADMIN']},
