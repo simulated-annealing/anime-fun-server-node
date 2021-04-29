@@ -1,5 +1,6 @@
 const commentDao = require('../models/comments/comment-dao')
 const activityDao = require('../models/activities/activity-dao')
+const userDao = require('../models/users/user-dao')
 
 module.exports = app => {
     app.post('/api/comments/anime/:animeId', (req, res) => {
@@ -16,6 +17,10 @@ module.exports = app => {
                 animeId: comment.animeId,
                 action: 'POST_REVIEW'
             })
+            if (req.session['profile']) {
+                userDao.updateUserExp(req.session['profile'].username, 1).then(user => res.send(comment))
+                return
+            }
             res.send(comment)
         })
     })

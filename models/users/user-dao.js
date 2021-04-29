@@ -21,6 +21,9 @@ const updateUserAvatar = (username, avatar) =>
 const deleteUser = userId =>
     userModel.deleteOne({_id: userId})
 
+const updateUserExp = (username, exp) =>
+    userModel.updateOne({username}, {$inc: {exp}})
+
 module.exports = {
     findAllUsers,
     findUserByName,
@@ -28,5 +31,6 @@ module.exports = {
     updateUserAvatar,
     createUser,
     updateUser,
-    deleteUser
+    deleteUser,
+    updateUserExp
 }

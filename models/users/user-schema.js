@@ -8,8 +8,9 @@ const userSchema = mongoose.Schema({
     avatar: String,
     email: String,
     phone: String,
-    authorization: Number,
-    userLevel: Number,
+    authorization: {type: String, enum: ['SUPER', 'NORMAL']},
+    exp: Number,
+    dob: String,
     role: {type: String, enum: ['USER', 'ADMIN']},
     favorites: [String],
     comments: [{
