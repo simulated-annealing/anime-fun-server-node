@@ -1,12 +1,15 @@
 const mongoose = require('mongoose')
 
-const userScheme = mongoose.Schema({
+const userSchema = mongoose.Schema({
     username: String,
     password: String,
     description: String,
     createAt: String,
+    avatar: String,
     email: String,
     phone: String,
+    authorization: Number,
+    userLevel: Number,
     role: {type: String, enum: ['USER', 'ADMIN']},
     favorites: [String],
     comments: [{
@@ -16,4 +19,4 @@ const userScheme = mongoose.Schema({
     watchlist: [String]
 }, {collection: 'users'})
 
-module.exports = userScheme
+module.exports = userSchema

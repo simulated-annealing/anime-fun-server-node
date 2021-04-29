@@ -1,5 +1,4 @@
 const feedbackDao = require('../models/feedbacks/feedback-dao')
-const activityDao = require('../models/activities/activity-dao')
 
 module.exports = app => {
     app.post('/api/feedbacks', (req, res) => {

@@ -32,6 +32,7 @@ require('./controllers/user-controller')(app)
 require('./controllers/comment-controller')(app)
 require('./controllers/activity-controller')(app)
 require('./controllers/feedback-controller')(app)
+require('./controllers/follow-controller')(app)
 
 
 app.listen(process.env.PORT || 3001)
